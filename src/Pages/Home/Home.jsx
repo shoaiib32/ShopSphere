@@ -1,13 +1,12 @@
-import React from 'react'
-import Sidebar from '../../Sidebar/Sidebar'
-import './Home.css'
+import Sidebar from "../../Sidebar/Sidebar";
+import "./Home.css";
 
-const Home = () => {
+const Home = ({active,setActive}) => {
   return (
     <>
-    <Sidebar/>
+      <Sidebar active={active}/>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

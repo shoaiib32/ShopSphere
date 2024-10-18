@@ -6,14 +6,21 @@ import { GoPerson } from "react-icons/go";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import "./Navbar.css"
 
-const Navbar = () => {
+const Navbar = ({active,setActive}) => {
+
+  const handleActive =() => {
+    setActive(!active)
+   console.log(active);
+    
+  }
+
   return (
     <>
-      <header className="navbar container-fluid bg-white navbar-expand shadow-lg ">
+      <header className="navbar container-fluid bg-white navbar-expand shadow-lg position-fixed">
         <div className="container-fluid mx-sm-3 mx-lg-5 row justify-content-between align-center">
           <div className="col-3 col-sm-2 d-flex align-items-center gap-3">
             <div className="hamburger">
-              <HiOutlineMenuAlt2 />
+              <HiOutlineMenuAlt2 onClick={handleActive}/>
             </div>
             <img src="logo.png" alt="" className="logo" />
           </div>
