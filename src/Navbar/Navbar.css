@@ -1,0 +1,52 @@
+.navbar {
+  height: 64px;
+}
+
+
+.logo {
+  width: 45px;
+}
+
+.hamburger{
+font-size: 24px;
+display: none;
+}
+
+.right-container span{
+font-size: 28px;
+}
+
+
+.input input{
+height: 44px;
+border: none;
+outline: none;
+}
+
+.input input {
+  border: 1px solid #E5E7EB;
+  border-left: none;
+  font-size: 18px;
+  color: #9CA3AF;
+}
+
+.input
+
+.search {
+  font-size: 28px;
+}
+
+.icon {
+  border: 1px solid #E5E7EB;
+  border-right:none ;
+  height: 44px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
