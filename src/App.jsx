@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div>
       <Navbar active={active} setActive={setActive} />
-      <Home active={active} setActive={setActive} />
+      <Home active={active} />
     </div>
   );
 };

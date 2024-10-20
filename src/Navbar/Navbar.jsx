@@ -10,8 +10,6 @@ const Navbar = ({active,setActive}) => {
 
   const handleActive =() => {
     setActive(!active)
-   console.log(active);
-    
   }
 
   return (
