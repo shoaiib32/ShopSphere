@@ -4,11 +4,11 @@ import Home from "./Pages/Home/Home";
 import Navbar from "./Navbar/Navbar";
 
 const App = () => {
-  const [active, setActive] = useState(true);
+  const [sidebar, setSidebar] = useState(true);
   return (
     <div>
-      <Navbar active={active} setActive={setActive} />
-      <Home active={active} />
+      <Navbar sidebar={sidebar} setSidebar={setSidebar} />
+      <Home sidebar={sidebar} />
     </div>
   );
 };

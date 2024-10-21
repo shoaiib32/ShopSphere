@@ -1,33 +1,40 @@
+// src/store/itemSlice.js
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-
+// Thunk for fetching products
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async() => {
-    const response = await fetch ("https://fakestoreapi.in/api/products?page=1&limit=30")
+  async (category) => {
+    let url;
+    if (category) {
+      url = `https://fakestoreapi.in/api/products/category?type=${category}`;
+    } else {
+      url = "https://fakestoreapi.in/api/products?page=1&limit=30";
+    }
+    const response = await fetch(url);
     return response.json();
   }
-)
+);
 
-const productsSLice = createSlice({
-  name:"products",
-  initialState:{
-    loading:false,
-    products:[]
+const productsSlice = createSlice({
+  name: "products",
+  initialState: {
+    loading: false,
+    products: [],
   },
-  extraReducers:(builder)=>{
+  extraReducers: (builder) => {
     builder
-    .addCase(fetchProducts.pending,(state)=>{
-      state.loading =true;
-    })
-    .addCase(fetchProducts.fulfilled, (state, action) => {
+      .addCase(fetchProducts.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
-        state.products = action.payload.products;
+        state.products = action.payload.products || action.payload;
       })
       .addCase(fetchProducts.rejected, (state) => {
         state.loading = false;
-      })
-  }
-})
+      });
+  },
+});
 
-export default productsSLice.reducer;
+export default productsSlice.reducer;

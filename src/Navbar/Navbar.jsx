@@ -6,10 +6,10 @@ import { GoPerson } from "react-icons/go";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import "./Navbar.css"
 
-const Navbar = ({active,setActive}) => {
+const Navbar = ({sidebar,setSidebar}) => {
 
-  const handleActive =() => {
-    setActive(!active)
+  const handleSidebar =() => {
+    setSidebar(!sidebar)
   }
 
   return (
@@ -18,7 +18,7 @@ const Navbar = ({active,setActive}) => {
         <div className="container-fluid mx-sm-3 mx-lg-5 row justify-content-between align-center">
           <div className="col-3 col-sm-2 d-flex align-items-center gap-3">
             <div className="hamburger">
-              <HiOutlineMenuAlt2 onClick={handleActive}/>
+              <HiOutlineMenuAlt2 onClick={handleSidebar}/>
             </div>
             <img src="logo.png" alt="" className="logo" />
           </div>

@@ -1,14 +1,28 @@
 import Sidebar from "../../Sidebar/Sidebar";
 import Feed from "../../Feed/Feed";
 import "./Home.css";
+import FilterButtons from "../../FilterButtons/FilterButtons";
+import { useState } from "react";
+import { fetchProducts } from "../../store/itemSlice";
+import { useDispatch } from "react-redux";
 
-const Home = ({ active }) => {
+const Home = ({ sidebar }) => {
+  const dispatch = useDispatch();
+
+  const [activeeCategory, setactiveeCategory] = useState("");
+
+  const handleCancelClick = () => {
+    dispatch(fetchProducts()); 
+    setactiveeCategory(""); 
+  };
+
   return (
     <div className="home d-flex  ">
-      <div className={`side-bar ${active ? "sidebar" : ""}`} >
-      <Sidebar active={active} />
+      <div className={`side-bar ${sidebar ? "sidebar" : ""}`} >
+      <Sidebar activeeCategory={activeeCategory} setactiveeCategory={setactiveeCategory} handleCancelClick={handleCancelClick}/>
       </div>
       <div className="main-content ">
+        <FilterButtons handleCancelClick={handleCancelClick} activeeCategory={activeeCategory}/>
       <Feed />
       </div>
     </div>

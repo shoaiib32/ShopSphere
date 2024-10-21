@@ -1,16 +1,4 @@
-.button {
-  border: none;
-  background-color: transparent;
-  border-radius: 15px;
-  font-size: 14px;
-  padding: 4px 8px;
-}
 
-.active {
-  background-color: #3f3f46;
-  color: white;
-  font-weight: 500;
-}
 
 .price p {
   font-size: 16px;
@@ -40,5 +28,3 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 30px;
 }
-
-

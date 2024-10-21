@@ -10,6 +10,7 @@
 
 .side-heading {
   font-size: 18px;
+  
 }
 
 .category-item {
@@ -28,6 +29,10 @@
 
 .category-item:hover {
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.category-item a {
+  text-transform: capitalize;
 }
 
 .activee a {

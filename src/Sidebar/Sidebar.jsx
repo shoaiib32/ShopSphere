@@ -1,8 +1,18 @@
-import React, { useState } from "react";
-import "./Sidebar.css"; // Import custom CSS for styling
+import React, { useState } from "react"; 
+import "./Sidebar.css";
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "../store/itemSlice"; 
 
-const Sidebar = ({ activee }) => {
-  const [category, setCategory] = useState(undefined);
+
+const Sidebar = ({activeeCategory , setactiveeCategory}) => {
+  const dispatch = useDispatch();
+  
+
+  const handleCategoryClick = (category) => {
+    dispatch(fetchProducts(category));
+    setactiveeCategory(category); // Set the activee category
+  };
+
 
 
   return (
@@ -10,42 +20,17 @@ const Sidebar = ({ activee }) => {
       <div className="mt-4">
         <h1 className="side-heading fw-bold text-center">Categories</h1>
         <ul className="list-unstyled mt-2 text-center">
-          <li
-            className={`category-item ${category === "tv" ? "activee" : ""}`}
-            onClick={() => setCategory("tv")}
-          >
-            <a href="#">Tv</a>
-          </li>
-          <li
-            className={`category-item ${category === "audio" ? "activee" : ""}`}
-            onClick={() => setCategory("audio")}
-          >
-            <a href="#">Audio</a>
-          </li>
-          <li
-            className={`category-item ${category === "laptop" ? "activee" : ""}`}
-            onClick={() => setCategory("laptop")}
-          >
-            <a href="#">Laptop</a>
-          </li>
-          <li
-            className={`category-item ${category === "mobile" ? "activee" : ""}`}
-            onClick={() => setCategory("mobile")}
-          >
-            <a href="#">Mobile</a>
-          </li>
-          <li
-            className={`category-item ${category === "gaming" ? "activee" : ""}`}
-            onClick={() => setCategory("gaming")}
-          >
-            <a href="#">Gaming</a>
-          </li>
-          <li
-            className={`category-item ${category === "application" ? "activee" : ""}`}
-            onClick={() => setCategory("application")}
-          >
-            <a href="#">Appliances</a>
-          </li>
+          {["tv", "audio", "laptop", "mobile", "gaming", "appliances"].map(
+            (category,i) => (
+              <li
+                key={i}
+                className={`category-item ${activeeCategory === category ? "activee" : ""}`} // Add activee class if the category is activee
+                onClick={() => handleCategoryClick(category)}
+              >
+                <a href="#">{category}</a>
+              </li>
+            )
+          )}
         </ul>
       </div>
     </div>

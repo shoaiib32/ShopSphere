@@ -1,0 +1,24 @@
+.button {
+  border: none;
+  background-color: transparent;
+  border-radius: 15px;
+  font-size: 14px;
+  padding: 2px 8px;
+}
+
+.cancel-button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.cancel-button span img{
+width: 11px;
+}
+
+
+.active {
+  background-color: #3f3f46;
+  color: white;
+  font-weight: 500;
+}
