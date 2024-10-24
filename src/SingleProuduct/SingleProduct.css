@@ -1,0 +1,122 @@
+.firstt-container {
+  background-color: #00000090; /* Semi-transparent background */
+  min-height: 100vh; /* Ensures container takes the full height */
+    backdrop-filter: blur(10px); /* Apply a blur effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+}
+
+.secondd-container {
+  width: 80%;
+  min-height: 90vh; /* Ensures content area takes most of the viewport */
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures button stays at the bottom */
+}
+
+.box-container {
+  width: 80%;
+}
+
+.customImg {
+  min-width: 50%;
+}
+
+.buttonn {
+  background: #3f4e4f;
+  border-radius: 20px;
+}
+
+.buttonn:hover {
+  background-color: #2c3639;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.text-decoration-line-through {
+  font-size: 18px;
+}
+
+.discount {
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  font-size: 12px;
+}
+
+.product-info span {
+  font-size: 14px;
+}
+
+.parent-btn {
+  width: 200px;
+  background: transparent;
+}
+
+.cros {
+  width: 40px;
+  color: red;
+}
+
+.cros:hover {
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.text-truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.bag-icon{
+  font-size: 20px;
+}
+
+@media (max-width: 1300px) {
+  .customImg {
+    margin: 0 auto;
+  }
+  .content-container {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .parent-btn {
+    width: 100%;
+  }
+
+  .secondd-container {
+    width: 100%;
+    min-height: 100vh; /* Ensures full viewport height */
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 1300px) {
+
+
+  .secondd-container {
+    width: 100%;
+    height: auto; 
+    border-radius: 0;
+  }
+}

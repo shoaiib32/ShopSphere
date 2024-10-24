@@ -4,7 +4,7 @@
   left: 0;
   width: 10rem;
   height: 100vh;
-  z-index: 30;
+  z-index: 5;
   background: linear-gradient(to bottom, #fdd5db, #dbeafe);
 }
 

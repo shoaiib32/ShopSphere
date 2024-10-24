@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Feed.css";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../store/itemSlice";
+import { fetchProducts, fetchSingleProduct } from "../store/itemSlice";
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -21,14 +21,19 @@ const Feed = () => {
     }
   }, [products]);
 
+
+  const handleSingleProduct = (id) =>{
+  dispatch(fetchSingleProduct(id))
+  }
+
   return (
     <div className="container-fluid">
       <div className="container">
-        <div className="items mt-3 gap-4">
+        <div className="items mt-3 gap-4 ">
           {data.map((d, i) => (
             <div
-              className="cardd d-flex flex-column justify-content-between"
-              key={i}
+              className="cardd d-flex flex-column justify-content-between cursor-pointer"
+              key={i} onClick={()=>handleSingleProduct(d.id)}
             >
               <div className="image shadow-sm bg-white rounded d-flex align-items-center w-100 h-100">
                 <img

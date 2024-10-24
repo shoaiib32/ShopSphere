@@ -16,11 +16,29 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+// Fetching single product details
+export const fetchSingleProduct = createAsyncThunk(
+  "product/fetchSingleProduct",
+  async(id) =>{
+   const response = await fetch(`https://fakestoreapi.in/api/products/${id}`)
+   return response.json()
+  }
+)
+
+
+
 const productsSlice = createSlice({
   name: "products",
   initialState: {
     loading: false,
+    singleProduct: false,
+    product: [],
     products: [],
+  },
+  reducers: {
+    resetSingleProduct: (state) => {
+      state.singleProduct = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -33,8 +51,21 @@ const productsSlice = createSlice({
       })
       .addCase(fetchProducts.rejected, (state) => {
         state.loading = false;
+      })
+
+      .addCase(fetchSingleProduct.pending, (state) => {
+        state.singleProduct = false;
+      })
+      .addCase(fetchSingleProduct.fulfilled, (state, action) => {
+        state.singleProduct = true;
+        state.product = action.payload.product;
+      })
+      .addCase(fetchSingleProduct.rejected, (state) => {
+        state.singleProduct = false;
       });
   },
 });
 
+export const { resetSingleProduct } = productsSlice.actions;
 export default productsSlice.reducer;
+
