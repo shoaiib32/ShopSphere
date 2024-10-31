@@ -1,49 +1,57 @@
-import React, { useState } from 'react'
-import './FilterButtons.css'
+import React, { useState } from 'react';
+import './FilterButtons.css';
 
-const FilterButtons = ({handleCancelClick ,activeeCategory}) => {
+const FilterButtons = ({ handleCancelClick, activeeCategory, onFilterChange }) => {
   const [button, setButton] = useState("all");
+
+  const handleButtonClick = (filter) => {
+    setButton(filter);
+    onFilterChange(filter); // Pass the filter to the parent
+  };
+
   return (
     <div className='container-fluid'>
       <div className="container">
-      <div className="button-container d-flex gap-2">
+        <div className="button-container d-flex gap-2">
           <button
             className={`button ${button === "all" ? "active" : ""}`}
-            onClick={() => setButton("all")}
+            onClick={() => handleButtonClick("all")}
           >
             All
           </button>
           <button
             className={`button ${button === "popular" ? "active" : ""}`}
-            onClick={() => setButton("popular")}
+            onClick={() => handleButtonClick("popular")}
           >
             Popular
           </button>
           <button
             className={`button ${button === "cheap" ? "active" : ""}`}
-            onClick={() => setButton("cheap")}
+            onClick={() => handleButtonClick("cheap")}
           >
             Cheap
           </button>
           <button
             className={`button ${button === "expensive" ? "active" : ""}`}
-            onClick={() => setButton("expensive")}
+            onClick={() => handleButtonClick("expensive")}
           >
             Expensive
           </button>
           <button
             className={`button ${button === "sale" ? "active" : ""}`}
-            onClick={() => setButton("sale")}
+            onClick={() => handleButtonClick("sale")}
           >
             Sale
           </button>
         </div>
-        {activeeCategory ? <button className="cancel-button px-2 border-0  bg-white mt-3  shadow text-capitalize">
-          {activeeCategory}  <span onClick={handleCancelClick}><img src="cart_cross_icon.png" alt="" /></span>
-        </button> :<></>}
+        {activeeCategory ? (
+          <button className="cancel-button px-2 border-0  bg-white mt-3  shadow text-capitalize">
+            {activeeCategory}   <span onClick={handleCancelClick}><img src="cart_cross_icon.png" alt="" /></span>
+          </button>
+        ) : null}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FilterButtons
+export default FilterButtons;

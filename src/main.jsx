@@ -7,12 +7,25 @@ import './index.css'
 import './media.css'
 import { Provider } from 'react-redux';
 import store from './store/index.js';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './Pages/Home/Home.jsx';
+import Cart from './Pages/Cart/Cart.jsx';
 
+
+const router = createBrowserRouter([
+  {
+    path:"/", element: <App/>,
+    children:[
+     { path:"/", element: <Home/>},
+     {path:'/cart', element: <Cart/>}
+    ]
+  }
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-    <App />
+    <RouterProvider router={router}/>
     </Provider>
     
   </StrictMode>,

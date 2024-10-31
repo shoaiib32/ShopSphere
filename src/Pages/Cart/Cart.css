@@ -1,0 +1,129 @@
+.cart-container {
+  position: relative;
+  top: 65px; /* Offset by the height of the navbar */
+  width: 90%;
+  height: calc(100vh - 45px); /* Account for navbar height */
+  overflow: auto;
+  scrollbar-width: none; 
+}
+
+
+.cart-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+
+
+.head-part {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: rgba(249, 249, 249, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Blurs the background behind the element */
+}
+
+
+.above-line h1 {
+  font-size: 30px;
+  font-family: inter;
+}
+
+.above-line p {
+  font-size: 14px;
+}
+
+.below-line button {
+  font-size: 14px;
+  border: 0.5px solid #434040;
+}
+
+.below-part {
+  width: 95%;
+  padding: 12px 20px;
+}
+
+.item{
+  min-width: 60%;
+ /* max-width: 770px;  */
+ max-width: 100%;
+}
+
+.img-box {
+  height: 200px;
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.card-content h1 {
+  font-size: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to two lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds ellipsis at the end */
+  white-space: normal; /* Allows wrapping to the next line */
+  max-width: 100%; /* Keeps width flexible within container */
+  line-height: 1.2em; /* Adjust to control line height */
+  max-height: 2.4em; /* Maximum height for two lines */
+}
+
+.card-content .text-success {
+  font-size: 14px;
+}
+
+.card-content p {
+  color: #a7a7af;
+  font-size: 16px;
+  margin: 0;
+}
+
+.buttonContainer button {
+  border: none;
+  border: 0.5px solid #d4cfcf;
+  background-color: white;
+  padding: auto;
+}
+
+.border-right {
+  border-right: none !important;
+}
+
+.total {
+  background-color: #F9F9F9;
+  min-width: 326px;
+  max-width: 100%;
+  height: 240px;
+  padding: 20px;
+}
+
+
+.total h1{
+font-size: 20px;
+}
+
+.line {
+  width: 80%;
+  margin: auto;
+  border-top: 1px solid #a7a7af;
+}
+
+.payment p{
+  margin: 0;
+ font-weight: 500;
+}
+
+.total button {
+  background-color: #2c3639;
+  font-size: 14px;
+}
+
+.remove-btn{
+  cursor: pointer;
+}
+
+@media (max-width:768px){
+  .below-part {
+    width: 100%;
+    padding: 12px 0px;
+  }
+}
+

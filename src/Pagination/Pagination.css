@@ -1,0 +1,29 @@
+.pagination-buttons{
+  padding: 15px 0px;
+}
+
+.pagination-buttons button{
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  border: 0.5px solid #d4cfcf;
+  background-color: white;
+}
+
+.five-buttons button{
+  
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0px 8px;
+}
+
+.five-buttons button:hover {
+  border: 0.5px solid #d4cfcf;
+}
+
+.activePagination{
+  background-color: black !important;
+  color: white;  
+}

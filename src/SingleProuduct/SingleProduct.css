@@ -1,8 +1,8 @@
 .firstt-container {
-  background-color: #00000090; /* Semi-transparent background */
-  min-height: 100vh; /* Ensures container takes the full height */
-    backdrop-filter: blur(10px); /* Apply a blur effect */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  background-color: #00000090; 
+  min-height: 100vh; 
+    backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
 }
 
 .secondd-container {
@@ -88,6 +88,8 @@
   font-size: 20px;
 }
 
+
+
 @media (max-width: 1300px) {
   .customImg {
     margin: 0 auto;
@@ -110,6 +112,9 @@
     justify-content: space-between;
   }
 }
+
+
+
 
 @media (max-width: 1300px) {
 

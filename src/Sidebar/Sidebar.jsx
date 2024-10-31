@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Sidebar.css";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../store/itemSlice"; 
+import { resetPage } from "../store/pagination";
 
 
 const Sidebar = ({activeeCategory , setactiveeCategory}) => {
@@ -10,6 +11,7 @@ const Sidebar = ({activeeCategory , setactiveeCategory}) => {
 
   const handleCategoryClick = (category) => {
     dispatch(fetchProducts(category));
+    dispatch(resetPage());
     setactiveeCategory(category); // Set the activee category
   };
 

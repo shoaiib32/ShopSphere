@@ -1,26 +1,22 @@
-import React, { useState } from "react";
 import Home from "./Pages/Home/Home";
 import Navbar from "./Navbar/Navbar";
 import SingleProduct from './SingleProuduct/SingleProduct'
 import { useSelector } from "react-redux";
+import { Outlet } from "react-router-dom";
 
 const App = () => {
-  const [sidebar, setSidebar] = useState(true);
 
-const {singleProduct} = useSelector((store)=> store.products)
-console.log(singleProduct);
+const {singleProduct} = useSelector((store)=> store.toggle)
+
 
 
   return (<>
 
-    <div className={`singleProduct position-fixed ${singleProduct ?"":"disable"}`}>
+    <div className={`singleProduct position-fixed ${singleProduct?"":"disable"}`}>
     <SingleProduct/>
     </div>
-    <div>
-      <Navbar sidebar={sidebar} setSidebar={setSidebar} />
-
-      <Home sidebar={sidebar} />
-    </div>
+    <Navbar/>
+     <Outlet/>
       </>
   );
 };

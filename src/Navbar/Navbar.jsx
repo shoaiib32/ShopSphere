@@ -4,23 +4,38 @@ import { CiBellOn } from "react-icons/ci";
 import { LiaShoppingCartSolid } from "react-icons/lia";
 import { GoPerson } from "react-icons/go";
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
-import "./Navbar.css"
+import "./Navbar.css";
+import { useDispatch, useSelector } from "react-redux";
 
-const Navbar = ({sidebar,setSidebar}) => {
+import { Link } from "react-router-dom";
+import { toggleAction } from "../store/toggle";
 
-  const handleSidebar =() => {
-    setSidebar(!sidebar)
-  }
+const Navbar = () => {
+  const dispatch = useDispatch();
+
+  const handleSidebar = () => {
+    dispatch(toggleAction.toggleSidebar());
+  };
+
+  
+
+  const cartItems = useSelector((store) => store.bag);
+
+  const totalUniqueItems = Object.keys(cartItems).filter(
+    (id) => cartItems[id] > 0
+  ).length;
 
   return (
     <>
-      <header className="navbar container-fluid bg-white navbar-expand shadow-lg position-fixed z-1">
+      <header className="navbar container-fluid bg-white navbar-expand shadow-lg position-fixed z-1 w-100">
         <div className="container-fluid mx-sm-3 mx-lg-5 row justify-content-between align-center">
           <div className="col-3 col-sm-2 d-flex align-items-center gap-3">
             <div className="hamburger">
-              <HiOutlineMenuAlt2 onClick={handleSidebar}/>
+              <HiOutlineMenuAlt2 onClick={handleSidebar} />
             </div>
-            <img src="logo.png" alt="" className="logo" />
+            <Link to="/">
+              <img src="logo.png" alt="Logo" className="logo" />
+            </Link>
           </div>
 
           <div className="input d-flex col-6 col-sm-7">
@@ -39,9 +54,16 @@ const Navbar = ({sidebar,setSidebar}) => {
               <span>
                 <CiBellOn />
               </span>
-              <span>
-                <LiaShoppingCartSolid />
-              </span>
+
+              <Link to="/cart" className="text-reset cart-icon-container d-flex align-items-center">
+                <LiaShoppingCartSolid className="cart-icon mt-2"/>
+                {totalUniqueItems > 0 && (
+                  <span className="cart-count d-flex justify-content-center align-items-center position-absolute ">
+                    <span className="absoulte counter-number text-white">{totalUniqueItems}</span>
+                  </span>
+                )}
+              </Link>
+
               <span>
                 <GoPerson />
               </span>

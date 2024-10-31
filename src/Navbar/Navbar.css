@@ -30,7 +30,6 @@ outline: none;
   color: #9CA3AF;
 }
 
-.input
 
 .search {
   font-size: 28px;
@@ -44,6 +43,46 @@ outline: none;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.nav-cart-count {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+
+  margin-left: -40px;
+  border-radius: 11px;
+  font-size: 14px;
+  background: red;
+  color: white;
+}
+
+/* Style for the cart icon container to position the badge correctly */
+.cart-icon-container {
+  position: relative;
+}
+
+.cart-icon {
+  font-size: 28px;
+}
+
+/* Style for the round counter */
+.cart-count {
+  top: 4px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #F87171;
+
+}
+
+
+.counter-number{
+  font-size: 12px !important;
 }
 
 @media (max-width:576px) {
