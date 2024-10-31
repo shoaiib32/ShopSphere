@@ -9,7 +9,9 @@ import Pagination from "../../Pagination/Pagination";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const [activeeCategory, setactiveeCategory] = useState(""); // Track selected category
+  const [activeeCategory, setactiveeCategory] = useState("");
+  const [filter, setFilter] = useState("all");
+
 
   const handleCancelClick = () => {
     dispatch(fetchProducts());  // Fetch homepage data
@@ -32,11 +34,12 @@ const Home = () => {
         />
       </div>
       <div className="main-content">
-        <FilterButtons
+            <FilterButtons
           handleCancelClick={handleCancelClick}
           activeeCategory={activeeCategory}
+          onFilterChange={setFilter}
         />
-        <Feed filter={activeeCategory ? activeeCategory : "all"} />
+        <Feed filter={filter} />
         
         {/* Show Pagination only when not in a category */}
         {!activeeCategory && <Pagination />}
