@@ -29,10 +29,10 @@ const Pagination = () => {
     <center>
       <hr className="w-75 mt-4" />
 
-      <div className="pagination-buttons d-flex justify-content-center gap-5">
+      <div className="pagination-buttons d-flex justify-content-center gap-2 gap-md-5 ">
         {pagination > 1 && (
           <button
-            className="p-2 rounded bg-red"
+            className="p-sm-2 rounded bg-red"
             onClick={handlePrevious}
           >
             <IoIosArrowBack /> Previous
@@ -49,7 +49,7 @@ const Pagination = () => {
 
         {pagination < 5 && (
           <button
-            className="p-2 rounded"
+            className="p-sm-2 rounded"
             onClick={handleNext}
           >
             Next <IoIosArrowForward />
