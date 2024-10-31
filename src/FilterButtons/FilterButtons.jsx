@@ -6,7 +6,7 @@ const FilterButtons = ({ handleCancelClick, activeeCategory, onFilterChange }) =
 
   const handleButtonClick = (filter) => {
     setButton(filter);
-    onFilterChange(filter); sidebarToggleSlice Pass the filter to the parent
+    onFilterChange(filter); 
   };
 
   return (
