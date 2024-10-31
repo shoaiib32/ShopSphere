@@ -12,15 +12,10 @@ const Home = () => {
   const [activeeCategory, setactiveeCategory] = useState("");
   const [filter, setFilter] = useState("all");
 
-
   const handleCancelClick = () => {
-    dispatch(fetchProducts());  // Fetch homepage data
-    setactiveeCategory("");  // Reset category state
+    dispatch(fetchProducts()); // Fetch homepage data
+    setactiveeCategory(""); // Reset category state
   };
- 
-
-  
-  
 
   const { sidebar } = useSelector((store) => store.toggle);
 
@@ -34,13 +29,13 @@ const Home = () => {
         />
       </div>
       <div className="main-content">
-            <FilterButtons
+        <FilterButtons
           handleCancelClick={handleCancelClick}
           activeeCategory={activeeCategory}
           onFilterChange={setFilter}
         />
         <Feed filter={filter} />
-        
+
         {/* Show Pagination only when not in a category */}
         {!activeeCategory && <Pagination />}
       </div>
