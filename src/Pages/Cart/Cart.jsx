@@ -7,7 +7,6 @@ import { bagAction } from "../../store/bag";
 import { BsTrash3 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-
 const Cart = () => {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
@@ -28,32 +27,35 @@ const Cart = () => {
 
   const handleRemoveQuantity = (id) => {
     dispatch(bagAction.removeFromBag({ id }));
-   
   };
 
   const handleDeleteItem = (id) => {
     dispatch(bagAction.deleteFromCart({ id }));
   };
 
-  // Calculate total, discount, and subtotal
-  let totalPrice = 0;
-  let totalDiscount = 0;
+  const calculateTotals = () => {
+    let totalPrice = 0;
+    let totalDiscount = 0;
 
-  data.forEach((product) => {
-    const quantity = cartItems[product.id] || 0;
-    const productTotal = product.price * quantity;
-    totalPrice += productTotal;
+    data.forEach((product) => {
+      const quantity = cartItems[product.id] || 0;
+      const productTotal = product.price * quantity;
+      totalPrice += productTotal;
 
-    if (product.discount) {
-      const discountAmount = (product.discount / 100) * productTotal;
-      totalDiscount += discountAmount;
-    }
-  });
+      if (product.discount) {
+        const discountAmount = (product.discount / 100) * productTotal;
+        totalDiscount += discountAmount;
+      }
+    });
 
-  // Applying Math.floor to round down
-  const roundedTotalPrice = Math.floor(totalPrice);
-  const roundedTotalDiscount = Math.floor(totalDiscount);
-  const roundedSubtotal = Math.floor(totalPrice - totalDiscount);
+    return {
+      totalPrice,
+      totalDiscount,
+      subtotal: totalPrice - totalDiscount,
+    };
+  };
+
+  const { totalPrice, totalDiscount, subtotal } = calculateTotals();
 
   return (
     <div className="cart-container m-auto px-xxl-5">
@@ -63,14 +65,14 @@ const Cart = () => {
           <p className="m-0 mb-1 fw-bold">({Object.keys(cartItems).length} items)</p>
         </div>
         <div className="below-line d-flex justify-content-end">
-         <Link to="/">
-         <button className="rounded bg-white py-2 px-2">
-            <div className="d-flex align-items-center">
-              <FaArrowLeftLong />
-              <span className="d-none d-sm-block">&nbsp; Continue Shopping</span>
-            </div>
-          </button>
-         </Link>
+          <Link to="/">
+            <button className="rounded bg-white py-2 px-2">
+              <div className="d-flex align-items-center">
+                <FaArrowLeftLong />
+                <span className="d-none d-sm-block">&nbsp; Continue Shopping</span>
+              </div>
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -126,9 +128,9 @@ const Cart = () => {
               <p>Discount:</p>
             </div>
             <div className="right-side m-auto">
-              <p>${roundedTotalPrice}</p>
+              <p>${Math.round(totalPrice)}</p>
               <p className="text-success">Free</p>
-              <p className="text-danger">-${roundedTotalDiscount}</p>
+              <p className="text-danger">-${Math.round(totalDiscount)}</p>
             </div>
           </div>
           <div className="line" />
@@ -137,7 +139,7 @@ const Cart = () => {
               <h1>Subtotal</h1>
             </div>
             <div className="right-sidee m-auto">
-              <h1>${roundedSubtotal}</h1>
+              <h1>${Math.round(subtotal)}</h1>
             </div>
           </div>
           <button className="text-white rounded p-2 mt-1">Proceed to Pay</button>

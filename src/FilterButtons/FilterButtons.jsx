@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './FilterButtons.css';
 
-const FilterButtons = ({ handleCancelClick, activeeCategory, onFilterChange }) => {
+const FilterButtons = ({ handleCancelClick, activeeCategory, setFilter }) => {
   const [button, setButton] = useState("all");
 
   const handleButtonClick = (filter) => {
     setButton(filter);
-    onFilterChange(filter); 
+    setFilter(filter); 
   };
 
   return (

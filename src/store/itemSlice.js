@@ -1,8 +1,5 @@
-// src/store/itemSlice.js
-
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// Fetch all products
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async (category) => {
     let url = category 
         ? `https://fakestoreapi.in/api/products/category?type=${category}`

@@ -7,7 +7,6 @@ import { bagAction } from '../store/bag';
 import { toggleAction } from '../store/toggle';
 import { Link } from 'react-router-dom';
 
-
 const SingleProduct = () => {
     const dispatch = useDispatch();
     const product = useSelector((store) => store.products.selectedProduct);
@@ -17,14 +16,12 @@ const SingleProduct = () => {
     const quantity = cart[product?.id] || 0;
 
     useEffect(() => {
-        // Update the `inCart` state based on quantity
         setInCart(quantity > 0);
     }, [quantity]);
 
     const handleAddToCart = (id) => {
         dispatch(bagAction.addToCart({ id }));
     };
-
 
     const closePopup = () => {
         dispatch(toggleAction.toggleSingleProduct());
@@ -51,18 +48,26 @@ const SingleProduct = () => {
                     <span className="text-truncate-3 fw-bold title">{product.title}</span>
                     <div className="d-flex gap-2 mt-4">
                         <div>
-                            <span className="text-lg text-decoration-line-through text-secondary pe-2">${product.price}</span>
-                            <span className="fs-3 fw-medium">
-                                <span className="text-success">$</span>
-                                {Math.floor(product.price - (product.price * product.discount) / 100)}
-                            </span>
+                            {product.discount ? (
+                                <>
+                                    <span className="text-lg text-decoration-line-through text-secondary pe-2">${product.price}</span>
+                                    <span className="fs-3 fw-medium">
+                                        <span className="text-success">$</span>
+                                        {Math.floor(product.price - (product.price * product.discount) / 100)}
+                                    </span>
+                                </>
+                            ) : (
+                                <span className="fs-3 fw-medium">${product.price}</span>
+                            )}
                         </div>
-                        <div className="d-flex align-items-center gap-1">
-                            <span className="discount pl-1 bg-danger text-white d-flex align-items-center justify-content-center">
-                                {product.discount}%
-                            </span>
-                            <span className="fw-medium text-secondary">off</span>
-                        </div>
+                        {product.discount && (
+                            <div className="d-flex align-items-center gap-1">
+                                <span className="discount pl-1 bg-danger text-white d-flex align-items-center justify-content-center">
+                                    {product.discount}%
+                                </span>
+                                <span className="fw-medium text-secondary">off</span>
+                            </div>
+                        )}
                     </div>
                     <div className="d-flex gap-3 mt-3">
                         <div className="d-flex flex-column product-info">
@@ -89,17 +94,14 @@ const SingleProduct = () => {
                                 <HiOutlineShoppingBag className="bag-icon" /> <span className="text-nowrap">Add to Cart</span>
                             </button>
                         ) : (
-
-                            <Link className='text-decoration-none' to="/cart" onClick={closePopup} >
-                                  <button 
-                                className="w-100 h-100 d-flex justify-content-center align-items-center gap-2 buttonn border-0 py-1 bg-danger text-white"
-                            >
-                                <HiOutlineShoppingBag className="bag-icon" /> <span className="text-nowrap">Go to Cart</span>
-                            </button>
-                        </Link>
-                          
+                            <Link className='text-decoration-none' to="/cart" onClick={closePopup}>
+                                <button 
+                                    className="w-100 h-100 d-flex justify-content-center align-items-center gap-2 buttonn border-0 py-1 bg-danger text-white"
+                                >
+                                    <HiOutlineShoppingBag className="bag-icon" /> <span className="text-nowrap">Go to Cart</span>
+                                </button>
+                            </Link>
                         )}
-                       
                     </div>
                 </div>
             </div>

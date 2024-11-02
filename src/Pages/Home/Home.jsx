@@ -25,14 +25,13 @@ const Home = () => {
         <Sidebar
           activeeCategory={activeeCategory}
           setactiveeCategory={setactiveeCategory}
-          handleCancelClick={handleCancelClick}
         />
       </div>
       <div className="main-content">
         <FilterButtons
           handleCancelClick={handleCancelClick}
           activeeCategory={activeeCategory}
-          onFilterChange={setFilter}
+          setFilter={setFilter}
         />
         <Feed filter={filter} />
 
