@@ -1,4 +1,4 @@
-import Home from "./Pages/Home/Home";
+
 import Navbar from "./Navbar/Navbar";
 import SingleProduct from './SingleProuduct/SingleProduct'
 import { useSelector } from "react-redux";

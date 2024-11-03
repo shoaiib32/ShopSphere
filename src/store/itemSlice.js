@@ -9,6 +9,14 @@ export const fetchProducts = createAsyncThunk("products/fetchProducts", async (c
     
 });
 
+export const fetchSearchProducts = createAsyncThunk(
+    "cocktail/fetchSearchProduct",
+    async({searchText})=>{
+        const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchText}`);
+        return response.json()
+    }
+)
+
 const productsSlice = createSlice({
     name: "products",
     initialState: {
