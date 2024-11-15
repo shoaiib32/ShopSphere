@@ -6,6 +6,7 @@ import { useState } from "react";
 import { fetchProducts } from "../../store/itemSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../Pagination/Pagination";
+import Header from "../../Header/Header";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Home = () => {
         />
       </div>
       <div className="main-content">
+        <Header/>
         <FilterButtons
           handleCancelClick={handleCancelClick}
           activeeCategory={activeeCategory}

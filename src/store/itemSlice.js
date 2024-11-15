@@ -17,11 +17,18 @@ export const fetchSearchProducts = createAsyncThunk(
     }
 )
 
+export const fetchFourProducts = createAsyncThunk("products/fetchFourProducts", async () => {
+    let url = "https://fakestoreapi.in/api/products?limit=150";
+    const response = await fetch(url);
+    return response.json();
+});
+
 const productsSlice = createSlice({
     name: "products",
     initialState: {
         loading: false,
         products: [],
+        fetchFourProducts:[],
         selectedProduct: null,
     },
     reducers: {
@@ -43,7 +50,12 @@ const productsSlice = createSlice({
             })
             .addCase(fetchProducts.rejected, (state) => {
                 state.loading = false;
-            });
+            })
+
+
+            .addCase(fetchFourProducts.fulfilled, (state, action) => {
+                state.fetchFourProducts = action.payload.products || action.payload;
+            })
     }
 });
 

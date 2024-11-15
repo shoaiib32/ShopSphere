@@ -10,7 +10,7 @@ const FilterButtons = ({ handleCancelClick, activeeCategory, setFilter }) => {
   };
 
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid mt-4'>
       <div className="container">
         <div className="button-container d-flex gap-2">
           <button

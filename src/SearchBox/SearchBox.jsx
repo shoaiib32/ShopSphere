@@ -45,7 +45,7 @@ const SearchBox = ({ searchText, onProductClick }) => {
             </div>
           ))
         ) : (
-          <p className="text-white">No products found</p>
+          <p className="text-white">No products found!</p>
         )}
       </div>
     </div>

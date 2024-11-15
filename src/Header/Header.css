@@ -1,0 +1,115 @@
+.sale {
+  color: #334155;
+}
+.carousel-item{
+  height: 240px;
+ }
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers the entire carousel item without gray space */
+}
+.carousel-inner {
+  height: 100%; /* Ensure the inner container also takes the full height */
+}
+
+.img-div img{
+  height: 110px;
+  width: 110px;
+}
+
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+.content-div p {
+  font-size: 12px;
+}
+
+.pricing p {
+  font-weight: 500;
+  font-size: 14px;
+  color: #A7A7B0;
+}
+
+.dollar-sign {
+  color: #22c55e;
+}
+
+.item-discount p {
+  display: flex !important;
+  gap: 0px !important;
+}
+
+.brand-heading{
+  font-size: 10px;
+  font-weight: 500;
+  color: #a1a1aa;
+}
+
+.brand-img {
+  height: 32px;
+  width: 32px;
+  background: white;
+}
+
+.brand-name {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.brand-btn {
+  border: none;
+ font-size: 10px;
+ padding: 0;
+ background: transparent;
+ border: 1px solid silver;
+}
+
+.mi {
+  background: #F57921;
+}
+
+
+.linee {
+  height: 100%;
+border-left:1px solid black ;
+}
+
+.vertical-line{
+  width: 0.5px; 
+  background-color: #CECED1; 
+  height: 80%; 
+  float: left; 
+}
+
+
+@media (min-width: 768px) {
+  .brand-container {
+    position: relative;
+    top: -150px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .brand-container {
+    position: static; 
+    top: auto;      
+  }
+}
+
+
+
+
+@media (max-width:1280px) {
+  .vertical-line {
+    display: none;
+  }
+}
+
